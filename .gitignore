@@ -1,0 +1,104 @@
+
+# ============================================================
+# TEAM E10 - CAREQUEUE
+# Git Ignore Configuration
+# ============================================================
+
+# ----------------------------
+# Maven Build Files
+# ----------------------------
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+
+# Keep Maven Wrapper files tracked:
+# mvnw
+# mvnw.cmd
+# .mvn/wrapper/maven-wrapper.jar
+# .mvn/wrapper/maven-wrapper.properties
+
+# ----------------------------
+# Eclipse IDE
+# ----------------------------
+.classpath
+.project
+.settings/
+bin/
+tmp/
+
+# ----------------------------
+# IntelliJ IDEA
+# ----------------------------
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ----------------------------
+# VS Code / Antigravity
+# ----------------------------
+.vscode/
+.antigravity/
+
+# ----------------------------
+# Operating System Files
+# ----------------------------
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.stackdump
+
+# ----------------------------
+# Log Files
+# ----------------------------
+*.log
+logs/
+
+# ----------------------------
+# Environment Variables
+# ----------------------------
+.env
+.env.*
+!.env.example
+*.env
+*.local
+*.local.properties
+
+# ----------------------------
+# Local Application Configuration
+# ----------------------------
+application-local.properties
+/src/main/resources/application-local.properties
+
+# Private TiDB Configuration
+/src/main/resources/application-tidb.properties
+
+# ----------------------------
+# Database Credentials and Secrets
+# ----------------------------
+credentials.json
+credentials.properties
+secrets.properties
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.truststore
+
+# ----------------------------
+# Local Database Backups
+# ----------------------------
+*.sql.bak
+*.dump
+*.sqlite
+*.db
