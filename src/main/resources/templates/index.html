@@ -2,477 +2,156 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title th:text="${appName} + ' | ' + ${teamName}">Smart Public Healthcare - Team E10</title>
-
-    <!-- Bootstrap 5 CSS -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f4f8fb">
+    <meta name="description" content="CareQueue E10 is a public healthcare appointment and outpatient queue management project by Team E10.">
+    <title th:text="${appName} + ' | CareQueue E10'">CareQueue E10 | Public healthcare, made clearer</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
 </head>
-<body class="d-flex flex-column min-vh-100 bg-light">
+<body>
+<a class="skip-link" href="#main-content">Skip to content</a>
+<div class="utility-bar">
+    <div class="container utility-inner">
+        <p class="utility-note"><span class="utility-mark" aria-hidden="true"></span><span><strong th:text="${teamName}">Team E10</strong> <span class="utility-separator">/</span> Public healthcare project</span></p>
+        <p class="utility-time"><i class="bi bi-clock" aria-hidden="true"></i><span id="liveClock" th:text="${serverTime}">Current server time</span></p>
+    </div>
+</div>
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-primary text-white py-1 px-3 small d-flex justify-content-between align-items-center">
-        <div>
-            <i class="bi bi-shield-check me-1"></i>
-            <span class="fw-semibold" th:text="${teamName}">Team E10</span> &bull;
-            <span>Phases 1-3 Complete &bull; User-facing workflows and authentication pending</span>
-        </div>
-        <div class="d-none d-md-block">
-            <i class="bi bi-clock me-1"></i>
-            <span id="liveClock" th:text="${serverTime}">Live Time</span>
-            <span class="badge bg-success ms-2"><i class="bi bi-circle-fill small me-1"></i>System Online</span>
+<nav class="navbar navbar-expand-lg site-nav" aria-label="Main navigation">
+    <div class="container">
+        <a class="navbar-brand brand-lockup" href="#home" aria-label="CareQueue E10 home">
+            <span class="brand-symbol" aria-hidden="true"><i class="bi bi-plus-lg"></i></span>
+            <span class="brand-copy"><strong>carequeue<span>e10</span></strong><small>Public health, in sync</small></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Open navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#home">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#queue-board">Queue demo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#departments">Departments</a></li>
+                <li class="nav-item"><a class="nav-link" href="#modules">Platform</a></li>
+                <li class="nav-item"><a class="nav-link" href="#architecture">Roadmap</a></li>
+                <li class="nav-item nav-status"><span class="status-pill"><span class="status-dot" aria-hidden="true"></span>Project preview</span></li>
+            </ul>
         </div>
     </div>
+</nav>
 
-    <!-- Main Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <span class="brand-icon me-2">
-                    <i class="bi bi-hospital fs-4 text-primary-emphasis"></i>
-                </span>
-                <div>
-                    <span class="fw-bold tracking-tight">CareQueue E10</span>
-                    <small class="d-block text-secondary text-uppercase" style="font-size: 0.65rem; letter-spacing: 1px;">Public Healthcare Portal</small>
+<main id="main-content">
+    <header id="home" class="hero-section">
+        <div class="hero-orbit hero-orbit-one" aria-hidden="true"></div>
+        <div class="hero-orbit hero-orbit-two" aria-hidden="true"></div>
+        <div class="container hero-container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 hero-copy">
+                    <p class="eyebrow hero-eyebrow"><span class="eyebrow-line"></span> Smarter outpatient coordination</p>
+                    <h1 th:text="${appName}">CareQueue E10</h1>
+                    <p class="hero-lede">A clearer way to coordinate appointments, clinic schedules, and outpatient queues in public hospitals.</p>
+                    <p class="hero-disclaimer">A project preview by Team E10. Patient-facing workflows and authentication are not yet available.</p>
+                    <div class="hero-actions">
+                        <a href="#queue-board" class="btn btn-primary btn-lg"><i class="bi bi-arrow-down-right" aria-hidden="true"></i> Explore the queue demo</a>
+                        <a href="#modules" class="btn btn-quiet-light btn-lg">See the platform <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="hero-meta"><span><i class="bi bi-code-slash" aria-hidden="true"></i> Java 21</span><span><i class="bi bi-box" aria-hidden="true"></i> Spring Boot 3</span><span><i class="bi bi-window" aria-hidden="true"></i> Thymeleaf</span></div>
                 </div>
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#home"><i class="bi bi-house-door me-1"></i> Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#departments"><i class="bi bi-diagram-3 me-1"></i> Departments</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#queue-board"><i class="bi bi-display me-1"></i> Queue Board Demo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#modules"><i class="bi bi-grid-3x3-gap me-1"></i> Modules</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#architecture"><i class="bi bi-layers me-1"></i> Architecture</a>
-                    </li>
-                    <li class="nav-item ms-lg-2">
-                        <span class="badge bg-secondary px-3 py-2 text-white">
-                            <i class="bi bi-file-earmark-code me-1"></i> Phases 1-3 Complete
-                        </span>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header id="home" class="hero-section text-white py-5 position-relative">
-        <div class="container py-4">
-            <div class="row align-items-center g-4">
-                <div class="col-lg-7">
-                    <div class="d-inline-flex align-items-center bg-white bg-opacity-10 border border-white border-opacity-25 rounded-pill px-3 py-1 mb-3">
-                        <span class="badge bg-info text-dark rounded-pill me-2">Java 21 + Spring Boot 3.x</span>
-                        <small class="text-white">Smart Outpatient Queue Management</small>
-                    </div>
-                    <h1 class="display-5 fw-bold mb-3" th:text="${appName}">Smart Public Healthcare Appointment and Queue Management System</h1>
-                    <p class="lead text-light mb-4">
-                        A centralized, transparent scheduling and digital queuing platform designed to eliminate OPD crowding, reduce patient waiting times, and streamline doctor clinic schedules in public hospitals.
-                    </p>
-                    <div class="d-flex flex-wrap gap-2">
-                        <a href="#queue-board" class="btn btn-warning btn-lg px-4 fw-semibold text-dark shadow-sm">
-                            <i class="bi bi-ticket-detailed me-2"></i>View Queue Board Demo
-                        </a>
-                        <a href="#modules" class="btn btn-outline-light btn-lg px-4">
-                            <i class="bi bi-info-circle me-2"></i>Explore System Modules
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-5">
-                    <!-- Sample OPD Status Highlight Box -->
-                    <div class="card border-0 shadow-lg text-dark bg-white rounded-4 overflow-hidden">
-                        <div class="card-header bg-primary text-white py-3 d-flex justify-content-between align-items-center">
-                            <span class="fw-bold"><i class="bi bi-broadcast me-2"></i>OPD Token Announcement</span>
-                            <span class="badge bg-light text-primary">DEMO</span>
-                        </div>
-                        <div class="card-body p-4 text-center">
-                            <div class="text-muted small text-uppercase tracking-wider">Sample Token</div>
-                            <div class="display-3 fw-bold text-primary my-2" id="currentTokenDisplay">A-108</div>
-                            <div class="badge bg-success-subtle text-success border border-success-subtle px-3 py-2 fs-6 mb-3">
-                                <i class="bi bi-check-circle me-1"></i> Room 104 &bull; Dr. Sarah Mitchell (General OPD)
-                            </div>
-                            <div class="row g-2 text-start pt-2 border-top">
-                                <div class="col-6">
-                                    <small class="text-muted d-block">Sample Next Tokens</small>
-                                    <span class="fw-bold text-dark fs-6" id="nextTokenDisplay">A-109, A-110</span>
-                                </div>
-                                <div class="col-6 text-end">
-                                    <small class="text-muted d-block">Sample Wait Estimate</small>
-                                    <span class="fw-bold text-primary fs-6" id="estWaitDisplay">~ 8 mins / patient</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer bg-light small text-center text-muted py-2">
-                            <i class="bi bi-info-circle me-1"></i> Demo data only; not connected to persisted queue tokens
-                        </div>
-                    </div>
+                <div class="col-lg-6">
+                    <section class="spotlight-card" aria-labelledby="spotlight-title">
+                        <div class="spotlight-topline"><span class="spotlight-kicker"><span class="status-dot" aria-hidden="true"></span> Illustrative queue preview</span><span class="demo-tag">SAMPLE DATA</span></div>
+                        <div class="spotlight-heading"><div><p class="eyebrow">General medicine</p><h2 id="spotlight-title">Now calling</h2></div><span class="room-chip"><i class="bi bi-geo-alt" aria-hidden="true"></i> Room 104</span></div>
+                        <div class="spotlight-token-row"><span class="token-prefix">Token</span><span class="spotlight-token" id="currentTokenDisplay">A-108</span><span class="token-check" aria-label="Sample token"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></span></div>
+                        <div class="spotlight-divider"></div>
+                        <div class="spotlight-details"><div><span class="detail-label">Up next</span><strong id="nextTokenDisplay">A-109, A-110</strong></div><div><span class="detail-label">Estimated wait</span><strong id="estWaitDisplay">~ 8 min / patient</strong></div></div>
+                        <div class="spotlight-footnote"><i class="bi bi-info-circle" aria-hidden="true"></i> Demo values only — not connected to persisted queue records.</div>
+                    </section>
+                    <div class="hero-caption"><span class="caption-rule"></span><span>Designed around a more transparent visit journey.</span></div>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Key Metrics Ribbon -->
-    <section class="py-4 bg-white border-bottom shadow-sm">
+    <section class="snapshot-section" aria-label="Project snapshot">
         <div class="container">
-            <div class="row text-center g-3">
-                <div class="col-6 col-md-3">
-                    <div class="p-3">
-                        <i class="bi bi-people fs-2 text-primary"></i>
-                        <h3 class="fw-bold mt-2 mb-0">4 User Roles</h3>
-                        <small class="text-muted">Admin, Doctor, Receptionist, Patient</small>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="p-3">
-                        <i class="bi bi-diagram-3 fs-2 text-success"></i>
-                        <h3 class="fw-bold mt-2 mb-0">6 Departments</h3>
-                        <small class="text-muted">General, Cardio, Ortho, Pedia, Eye, ENT</small>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="p-3">
-                        <i class="bi bi-shield-lock fs-2 text-warning"></i>
-                        <h3 class="fw-bold mt-2 mb-0">4 Roles Defined</h3>
-                        <small class="text-muted">Authentication / RBAC not implemented</small>
-                    </div>
-                </div>
-                <div class="col-6 col-md-3">
-                    <div class="p-3">
-                        <i class="bi bi-database-check fs-2 text-info"></i>
-                        <h3 class="fw-bold mt-2 mb-0">9 Entities</h3>
-                        <small class="text-muted">9 JPA entities mapped to MySQL</small>
-                    </div>
-                </div>
+            <div class="snapshot-grid">
+                <article class="snapshot-item"><span class="snapshot-icon"><i class="bi bi-people" aria-hidden="true"></i></span><div><strong>4 roles</strong><span>Admin, doctor, receptionist, patient</span></div></article>
+                <article class="snapshot-item"><span class="snapshot-icon"><i class="bi bi-hospital" aria-hidden="true"></i></span><div><strong>6 specialties</strong><span>Illustrative department previews</span></div></article>
+                <article class="snapshot-item"><span class="snapshot-icon"><i class="bi bi-database" aria-hidden="true"></i></span><div><strong>9 entities</strong><span>JPA data model foundation</span></div></article>
+                <article class="snapshot-item"><span class="snapshot-icon"><i class="bi bi-signpost-split" aria-hidden="true"></i></span><div><strong>10 phases</strong><span>3 complete; web workflows pending</span></div></article>
             </div>
         </div>
     </section>
 
-    <!-- Sample OPD Queue Board Section -->
-    <section id="queue-board" class="py-5 bg-light">
+    <section id="queue-board" class="section section-soft">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-primary text-uppercase px-3 py-2 mb-2">Sample OPD Counter</span>
-                <h2 class="fw-bold">Digital Token &amp; OPD Queue Board</h2>
-                <p class="text-muted mx-auto" style="max-width: 700px;">
-                    Sample token values only; this board is not connected to the persisted MySQL queue.
-                </p>
+            <div class="section-heading section-heading-split">
+                <div><p class="eyebrow"><span class="eyebrow-line"></span> Queue board demo</p><h2>A calmer view of the waiting room.</h2></div>
+                <p>Sample tokens illustrate how queue information could be presented. This board is not connected to the persisted MySQL queue.</p>
             </div>
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm queue-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="fw-bold mb-0 text-primary">General Medicine</h5>
-                                <span class="badge bg-success">Room 101</span>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between my-3 p-3 bg-light rounded-3">
-                                <div>
-                                    <small class="text-muted d-block">Sample Token</small>
-                                    <span class="fs-2 fw-bold text-primary">A-108</span>
-                                </div>
-                                <div class="text-end">
-                                    <small class="text-muted d-block">Sample Waiting</small>
-                                    <span class="badge bg-secondary fs-6">6 patients</span>
-                                </div>
-                            </div>
-                            <div class="progress mb-2" style="height: 6px;">
-                                <div class="progress-bar bg-primary" role="progressbar" style="width: 65%;" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small class="text-muted"><i class="bi bi-clock me-1"></i> Sample avg wait: 10 mins</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm queue-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="fw-bold mb-0 text-success">Pediatrics</h5>
-                                <span class="badge bg-success">Room 204</span>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between my-3 p-3 bg-light rounded-3">
-                                <div>
-                                    <small class="text-muted d-block">Sample Token</small>
-                                    <span class="fs-2 fw-bold text-success">P-042</span>
-                                </div>
-                                <div class="text-end">
-                                    <small class="text-muted d-block">Sample Waiting</small>
-                                    <span class="badge bg-secondary fs-6">4 patients</span>
-                                </div>
-                            </div>
-                            <div class="progress mb-2" style="height: 6px;">
-                                <div class="progress-bar bg-success" role="progressbar" style="width: 45%;" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small class="text-muted"><i class="bi bi-clock me-1"></i> Sample avg wait: 7 mins</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card h-100 border-0 shadow-sm queue-card">
-                        <div class="card-body p-4">
-                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                <h5 class="fw-bold mb-0 text-danger">Cardiology</h5>
-                                <span class="badge bg-success">Room 302</span>
-                            </div>
-                            <div class="d-flex align-items-center justify-content-between my-3 p-3 bg-light rounded-3">
-                                <div>
-                                    <small class="text-muted d-block">Sample Token</small>
-                                    <span class="fs-2 fw-bold text-danger">C-019</span>
-                                </div>
-                                <div class="text-end">
-                                    <small class="text-muted d-block">Sample Waiting</small>
-                                    <span class="badge bg-secondary fs-6">3 patients</span>
-                                </div>
-                            </div>
-                            <div class="progress mb-2" style="height: 6px;">
-                                <div class="progress-bar bg-danger" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <small class="text-muted"><i class="bi bi-clock me-1"></i> Sample avg wait: 15 mins</small>
-                        </div>
-                    </div>
-                </div>
+            <div class="row g-3 queue-grid">
+                <div class="col-md-4"><article class="queue-card queue-card-blue"><div class="queue-card-head"><div><span class="queue-specialty">General medicine</span><span class="queue-clinic">Outpatient clinic</span></div><span class="room-chip room-chip-light">Room 101</span></div><div class="queue-card-main"><div><span class="detail-label">Sample token</span><strong class="queue-token">A-108</strong></div><div class="queue-wait"><strong>6</strong><span>sample patients waiting</span></div></div><div class="queue-progress" role="img" aria-label="Illustrative queue progress, 65 percent"><span style="--progress:65%"></span></div><div class="queue-card-foot"><span><i class="bi bi-clock" aria-hidden="true"></i> Sample average wait</span><strong>10 min</strong></div></article></div>
+                <div class="col-md-4"><article class="queue-card queue-card-teal"><div class="queue-card-head"><div><span class="queue-specialty">Pediatrics</span><span class="queue-clinic">Outpatient clinic</span></div><span class="room-chip room-chip-light">Room 204</span></div><div class="queue-card-main"><div><span class="detail-label">Sample token</span><strong class="queue-token">P-042</strong></div><div class="queue-wait"><strong>4</strong><span>sample patients waiting</span></div></div><div class="queue-progress" role="img" aria-label="Illustrative queue progress, 45 percent"><span style="--progress:45%"></span></div><div class="queue-card-foot"><span><i class="bi bi-clock" aria-hidden="true"></i> Sample average wait</span><strong>7 min</strong></div></article></div>
+                <div class="col-md-4"><article class="queue-card queue-card-violet"><div class="queue-card-head"><div><span class="queue-specialty">Cardiology</span><span class="queue-clinic">Outpatient clinic</span></div><span class="room-chip room-chip-light">Room 302</span></div><div class="queue-card-main"><div><span class="detail-label">Sample token</span><strong class="queue-token">C-019</strong></div><div class="queue-wait"><strong>3</strong><span>sample patients waiting</span></div></div><div class="queue-progress" role="img" aria-label="Illustrative queue progress, 80 percent"><span style="--progress:80%"></span></div><div class="queue-card-foot"><span><i class="bi bi-clock" aria-hidden="true"></i> Sample average wait</span><strong>15 min</strong></div></article></div>
             </div>
+            <div class="simulator-bar"><div><span class="simulator-label">Try the interaction</span><span class="simulator-description">Advance the sample General Medicine token in this browser demo.</span></div><button type="button" id="btnSimulateToken" class="btn btn-outline-primary"><i class="bi bi-arrow-repeat" aria-hidden="true"></i> Simulate next call</button></div>
+            <p id="simAlert" class="sim-alert" role="status" aria-live="polite" aria-atomic="true"></p>
+        </div>
+    </section>
 
-            <!-- Interactive Token Simulator Button -->
-            <div class="text-center mt-4">
-                <button type="button" id="btnSimulateToken" class="btn btn-outline-primary px-4 py-2">
-                    <i class="bi bi-arrow-repeat me-1"></i> Simulate Next Token Call
-                </button>
-                <div id="simAlert" class="mt-2 text-success small fw-semibold" style="display: none;"></div>
+    <section id="departments" class="section section-white">
+        <div class="container">
+            <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> Care, organized by specialty</p><h2>Outpatient departments</h2></div><p>Preview the specialties represented in this project. Department details and doctor counts below are sample content, not loaded from the database.</p></div>
+            <div class="row g-3 department-grid">
+                <div class="col-md-6 col-lg-4" th:each="dept : ${departments}"><article class="department-card"><span class="department-icon" aria-hidden="true"><i class="bi" th:classappend="${dept.icon}"></i></span><div class="department-content"><div class="department-title-row"><h3 th:text="${dept.name}">Department Name</h3><span class="preview-label">Preview</span></div><p th:text="${dept.description}">Department description</p><div class="department-meta"><span><i class="bi bi-person-badge" aria-hidden="true"></i> <span th:text="${dept.doctorCount}">10</span> sample doctors</span><span>Morning &amp; evening OPD</span></div></div></article></div>
             </div>
         </div>
     </section>
 
-    <!-- Hospital Departments Section -->
-    <section id="departments" class="py-5 bg-white">
+    <section id="modules" class="section section-tint">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-info text-dark text-uppercase px-3 py-2 mb-2">Clinical Specialties</span>
-                <h2 class="fw-bold">Outpatient Departments</h2>
-                <p class="text-muted mx-auto" style="max-width: 650px;">
-                    Sample department previews; this list is not loaded from the MySQL department table.
-                </p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" th:each="dept : ${departments}">
-                    <div class="card h-100 border rounded-3 p-3 department-card shadow-sm">
-                        <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="icon-box bg-primary-subtle text-primary rounded-3 p-3 me-3">
-                                    <i class="bi fs-3" th:classappend="${dept.icon}"></i>
-                                </div>
-                                <div>
-                                    <h5 class="fw-bold mb-0 text-dark" th:text="${dept.name}">Department Name</h5>
-                                    <small class="text-success"><i class="bi bi-person-badge me-1"></i><span th:text="${dept.doctorCount}">10</span> Sample Doctors</small>
-                                </div>
-                            </div>
-                            <p class="text-muted small mb-3" th:text="${dept.description}">Department description goes here.</p>
-                            <div class="d-flex justify-content-between align-items-center pt-2 border-top">
-                                <span class="badge bg-light text-secondary border">Morning &amp; Evening OPD</span>
-                                <span class="text-primary small fw-semibold"><i class="bi bi-check2-circle me-1"></i>Preview</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> Platform capabilities</p><h2>Built for the full visit journey.</h2></div><p>These modules describe the intended system. Several workflows are still under development and are not available through this preview.</p></div>
+            <div class="row g-3 module-grid">
+                <div class="col-md-6 col-lg-4" th:each="moduleItem : ${modules}"><article class="module-card"><span class="module-icon" aria-hidden="true"><i class="bi" th:classappend="${moduleItem.icon}"></i></span><h3 th:text="${moduleItem.title}">Module Title</h3><p th:text="${moduleItem.description}">Module description</p><span class="module-status"><span class="status-dot status-dot-muted" aria-hidden="true"></span> Planned capability</span></article></div>
             </div>
         </div>
     </section>
 
-    <!-- System Modules Section -->
-    <section id="modules" class="py-5 bg-light border-top">
+    <section id="architecture" class="section section-white">
         <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-dark text-uppercase px-3 py-2 mb-2">Core Architecture</span>
-                <h2 class="fw-bold">System Module Roadmap</h2>
-                <p class="text-muted mx-auto" style="max-width: 700px;">
-                    Structured according to Document 1 (Proposal) and Document 2 (Integrated Master Prompt).
-                    Descriptions are planned capabilities; patient workflows, authentication, and a persisted queue board are not yet exposed in the web app.
-                </p>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-4" th:each="moduleItem : ${modules}">
-                    <div class="card h-100 border-0 shadow-sm p-3 module-card">
-                        <div class="card-body">
-                            <div class="icon-box bg-secondary-subtle text-dark rounded-circle p-3 d-inline-flex mb-3">
-                                <i class="bi fs-4" th:classappend="${moduleItem.icon}"></i>
-                            </div>
-                            <h5 class="fw-bold text-dark mb-2" th:text="${moduleItem.title}">Module Title</h5>
-                            <p class="text-muted small" th:text="${moduleItem.description}">Module description aligned with enterprise healthcare standards.</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> Under the hood</p><h2>Technology &amp; roadmap</h2></div><p>A familiar Java stack supports the project’s appointment, scheduling, and queue-management foundation.</p></div>
+            <div class="row g-4 architecture-grid">
+                <div class="col-lg-6"><article class="info-panel"><div class="panel-heading"><span class="panel-icon"><i class="bi bi-cpu" aria-hidden="true"></i></span><div><span class="panel-kicker">Project foundation</span><h3>Technology stack</h3></div></div><dl class="stack-list"><div><dt>Language</dt><dd>Java 21 LTS</dd></div><div><dt>Backend</dt><dd>Spring Boot 3.3.5</dd></div><div><dt>Web interface</dt><dd>Thymeleaf + Bootstrap 5</dd></div><div><dt>Persistence</dt><dd>MySQL 8 + Hibernate JPA</dd></div><div><dt>Build</dt><dd>Maven Wrapper</dd></div><div><dt>Development</dt><dd>Eclipse IDE / Google Antigravity</dd></div></dl></article></div>
+                <div class="col-lg-6"><article class="info-panel roadmap-panel"><div class="panel-heading"><span class="panel-icon"><i class="bi bi-signpost-2" aria-hidden="true"></i></span><div><span class="panel-kicker">Delivery plan</span><h3>10-phase roadmap</h3></div><span class="roadmap-progress">3 / 10 complete</span></div><ol class="roadmap-list">
+                    <li class="roadmap-complete"><span class="phase-marker"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong>Project setup &amp; baseline UI</strong><span>Phase 1 · Complete</span></div></li>
+                    <li class="roadmap-complete"><span class="phase-marker"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong>Database entities &amp; connection</strong><span>Phase 2 · Complete</span></div></li>
+                    <li class="roadmap-complete"><span class="phase-marker"><i class="bi bi-check-lg" aria-hidden="true"></i></span><div><strong>Repository &amp; service layers</strong><span>Phase 3 · Complete; web workflows pending</span></div></li>
+                    <li><span class="phase-marker">4</span><div><strong>Security &amp; role-based access</strong><span>Admin, doctor, receptionist, patient</span></div></li>
+                    <li><span class="phase-marker">5</span><div><strong>Patient &amp; doctor workflows</strong><span>Web routes pending</span></div></li>
+                    <li><span class="phase-marker">6</span><div><strong>Appointment workflows</strong><span>Slot concurrency verification</span></div></li>
+                    <li><span class="phase-marker">7</span><div><strong>Persisted queue integration</strong><span>Current board uses sample values</span></div></li>
+                    <li><span class="phase-marker">8</span><div><strong>Role-specific dashboards</strong><span>Four planned portals</span></div></li>
+                    <li><span class="phase-marker">9</span><div><strong>Notifications, audit &amp; reports</strong><span>No delivery provider configured</span></div></li>
+                    <li><span class="phase-marker">10</span><div><strong>Testing &amp; documentation</strong><span>Comprehensive project verification</span></div></li>
+                </ol></article></div>
             </div>
         </div>
     </section>
+</main>
 
-    <!-- Technical Architecture & Specifications Section -->
-    <section id="architecture" class="py-5 bg-white border-top">
-        <div class="container">
-            <div class="text-center mb-5">
-                <span class="badge bg-success text-uppercase px-3 py-2 mb-2">Engineering Specs</span>
-                <h2 class="fw-bold">Technology Stack &amp; Development Roadmap</h2>
-                <p class="text-muted mx-auto" style="max-width: 700px;">
-                    Team E10 follows an enterprise-grade 10-phase roadmap designed for academic excellence and industry rigor.
-                </p>
-            </div>
-
-            <div class="row g-4 mb-5">
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-header bg-dark text-white fw-bold">
-                            <i class="bi bi-cpu me-2"></i>Approved Technology Stack
-                        </div>
-                        <div class="card-body p-4">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-code-slash text-primary me-2"></i>Language</span>
-                                    <span class="badge bg-primary rounded-pill">Java 21 (Temurin LTS)</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-box-seam text-success me-2"></i>Backend Framework</span>
-                                    <span class="badge bg-success rounded-pill">Spring Boot 3.3.5</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-window text-info me-2"></i>Frontend UI</span>
-                                    <span class="badge bg-info text-dark rounded-pill">Thymeleaf + Bootstrap 5</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-database text-warning me-2"></i>Database Engine</span>
-                                    <span class="badge bg-warning text-dark rounded-pill">MySQL 8.x + Hibernate JPA</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-tools text-secondary me-2"></i>Build &amp; Dependency</span>
-                                    <span class="badge bg-secondary rounded-pill">Maven Wrapper (mvnw.cmd)</span>
-                                </li>
-                                <li class="list-group-item d-flex justify-content-between align-items-center">
-                                    <span><i class="bi bi-terminal text-dark me-2"></i>IDE Compatibility</span>
-                                    <span class="badge bg-dark rounded-pill">Eclipse IDE / Google Antigravity</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-header bg-primary text-white fw-bold">
-                            <i class="bi bi-kanban me-2"></i>10-Phase Project Roadmap
-                        </div>
-                        <div class="card-body p-4">
-                            <div class="timeline">
-                                <div class="timeline-item active mb-3">
-                                    <span class="badge bg-success me-2">Phase 1</span>
-                                    <strong>Project Setup &amp; Baseline UI</strong> (COMPLETED)
-                                </div>
-                                <div class="timeline-item active mb-3">
-                                    <span class="badge bg-success me-2">Phase 2</span>
-                                    MySQL Connection &amp; 9 Database Entities (COMPLETED)
-                                </div>
-                                <div class="timeline-item active mb-3">
-                                    <span class="badge bg-success me-2">Phase 3</span>
-                                    Repository &amp; Business Service Layers (COMPLETED; web workflows remain pending)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 4</span>
-                                    Spring Security &amp; RBAC (Admin, Doctor, Receptionist, Patient)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 5</span>
-                                    Patient &amp; Doctor Web Workflows (service operations exist; web routes pending)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 6</span>
-                                    Appointment Web Workflows &amp; Slot Concurrency Verification (service operations exist)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 7</span>
-                                    Persisted Queue Board Integration (token service operations exist; board uses sample data)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 8</span>
-                                    Role-Specific Dashboards (4 Portals)
-                                </div>
-                                <div class="timeline-item text-muted mb-2">
-                                    <span class="badge bg-light text-dark border me-2">Phase 9</span>
-                                    Notification Delivery, Audit Integration &amp; Reports (no delivery provider configured)
-                                </div>
-                                <div class="timeline-item text-muted">
-                                    <span class="badge bg-light text-dark border me-2">Phase 10</span>
-                                    Comprehensive Testing, Documentation &amp; Viva Support
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-main row g-4">
+            <div class="col-lg-5"><a class="navbar-brand brand-lockup footer-brand" href="#home"><span class="brand-symbol" aria-hidden="true"><i class="bi bi-plus-lg"></i></span><span class="brand-copy"><strong>carequeue<span>e10</span></strong><small>Public health, in sync</small></span></a><p class="footer-description">An academic project exploring clearer appointment and outpatient queue coordination for public hospitals.</p><p class="footer-disclaimer"><i class="bi bi-exclamation-triangle" aria-hidden="true"></i> Administrative scheduling concept only. Not for diagnosis or emergency triage.</p></div>
+            <div class="col-6 col-lg-3"><h2 class="footer-heading">Explore</h2><ul class="footer-links"><li><a href="#queue-board">Queue demo</a></li><li><a href="#departments">Departments</a></li><li><a href="#modules">Platform modules</a></li><li><a href="#architecture">Technology &amp; roadmap</a></li></ul></div>
+            <div class="col-6 col-lg-4"><h2 class="footer-heading">Project details</h2><dl class="footer-details"><div><dt>Team</dt><dd th:text="${teamName}">Team E10</dd></div><div><dt>Release</dt><dd th:text="${appVersion}">1.0.0-SNAPSHOT</dd></div><div><dt>Application</dt><dd>Spring Boot 3.3.5 · Java 21</dd></div><div><dt>Server port</dt><dd><code th:text="|localhost:${serverPort}|">localhost:8080</code></dd></div></dl></div>
         </div>
-    </section>
+        <div class="footer-bottom"><span>© 2026 Team E10 · CareQueue</span><span>Phases 1–3 complete · User workflows remain in development</span></div>
+    </div>
+</footer>
 
-    <!-- Footer -->
-    <footer class="bg-dark text-white pt-5 pb-4 mt-auto">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6 col-lg-5">
-                    <h5 class="fw-bold text-white mb-3">
-                        <i class="bi bi-hospital text-primary me-2"></i>CareQueue E10
-                    </h5>
-                    <p class="text-secondary small">
-                        Smart Public Healthcare Appointment and Queue Management System. Developed for public hospital outpatient administrative efficiency, transparent doctor schedule visibility, and digital token coordination.
-                    </p>
-                    <p class="small text-secondary mb-0">
-                        <i class="bi bi-exclamation-triangle-fill text-warning me-1"></i>
-                        Administrative scheduling platform only. Not intended for clinical diagnosis or emergency triage.
-                    </p>
-                </div>
-                <div class="col-md-3 col-lg-3">
-                    <h6 class="fw-bold text-uppercase text-light mb-3">Quick Navigation</h6>
-                    <ul class="list-unstyled small">
-                        <li class="mb-2"><a href="#home" class="text-secondary text-decoration-none hover-white">Home</a></li>
-                        <li class="mb-2"><a href="#queue-board" class="text-secondary text-decoration-none hover-white">Queue Board Demo</a></li>
-                        <li class="mb-2"><a href="#departments" class="text-secondary text-decoration-none hover-white">Clinical Specialties</a></li>
-                        <li class="mb-2"><a href="#modules" class="text-secondary text-decoration-none hover-white">System Modules</a></li>
-                        <li class="mb-2"><a href="#architecture" class="text-secondary text-decoration-none hover-white">Tech Architecture</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3 col-lg-4">
-                    <h6 class="fw-bold text-uppercase text-light mb-3">Project Metadata</h6>
-                    <ul class="list-unstyled small text-secondary">
-                        <li class="mb-2"><strong>Team:</strong> <span th:text="${teamName}">Team E10</span></li>
-                        <li class="mb-2"><strong>Platform:</strong> Spring Boot 3.3.5 &bull; Java 21 LTS</li>
-                        <li class="mb-2"><strong>Status:</strong> <span class="badge bg-success">Phases 1-3 Complete</span></li>
-                        <li class="mb-2"><strong>Server Port:</strong> <code th:text="|http://localhost:${serverPort}|">http://localhost:8080</code></li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="border-secondary my-4">
-            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center small text-secondary">
-                <div>&copy; 2026 Team E10. Smart Public Healthcare Appointment &amp; Queue Management System.</div>
-                <div class="mt-2 mt-sm-0">Phases 1-3 Complete &bull; Web workflows and authentication remain pending</div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bootstrap 5 Bundle JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <!-- Custom JavaScript -->
-    <script th:src="@{/js/main.js}" src="/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script th:src="@{/js/main.js}" src="/js/main.js"></script>
 </body>
 </html>
